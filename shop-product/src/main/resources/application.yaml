@@ -18,5 +18,5 @@ spring:
         hbm2ddl:
           auto: update
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-#ribbon:
-#  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
