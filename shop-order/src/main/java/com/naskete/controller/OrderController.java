@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.naskete.entity.Order;
 import com.naskete.entity.Product;
 import com.naskete.service.OrderService;
+import com.naskete.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -23,19 +24,15 @@ public class OrderController {
     private OrderService orderService;
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
-    private DiscoveryClient discoveryClient;
+    private ProductService productService;
 
 
     @GetMapping("/order/prod/{pid}")
     public Order order(@PathVariable("pid") Integer pid) {
-        String url = "service-product";
-        Product product = restTemplate.getForObject("http://" + url + "/product/" + pid, Product.class);
+        Product product = productService.findByPid(pid);
         log.info(">>商品查询结果: " + JSON.toJSONString(product));
         Order order = new Order();
-        order.setOid(2L);
+        order.setOid(3L);
         order.setUid(1001);
         order.setUsername("zero");
         order.setPid(product.getPid());
