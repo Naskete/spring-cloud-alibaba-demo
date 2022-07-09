@@ -16,4 +16,36 @@ public class Product {
     private String pname;
     private Double pprice;
     private Integer stock;
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public Double getPprice() {
+        return pprice;
+    }
+
+    public void setPprice(Double pprice) {
+        this.pprice = pprice;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
 }
