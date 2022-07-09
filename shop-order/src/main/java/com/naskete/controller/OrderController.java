@@ -31,15 +31,15 @@ public class OrderController {
 
     @GetMapping("/order/prod/{pid}")
     public Order order(@PathVariable("pid") Integer pid) {
-        List<ServiceInstance> instanceList = discoveryClient.getInstances("service-product");
-        int idx = new Random().nextInt(instanceList.size());
-        ServiceInstance serviceInstance = instanceList.get(idx);
-        String url = serviceInstance.getHost() + ":" + serviceInstance.getPort();
-        log.info(">>从nacos中获取微服务地址为: " + url);
+//        List<ServiceInstance> instanceList = discoveryClient.getInstances("service-product");
+//        int idx = new Random().nextInt(instanceList.size());
+//        ServiceInstance serviceInstance = instanceList.get(idx);
+//        String url = serviceInstance.getHost() + ":" + serviceInstance.getPort();
+        String url = "service-product";
         Product product = restTemplate.getForObject("http://" + url + "/product/" + pid, Product.class);
         log.info(">>商品查询结果: " + JSON.toJSONString(product));
         Order order = new Order();
-        order.setOid(1L);
+        order.setOid(2L);
         order.setUid(1001);
         order.setUsername("zero");
         order.setPid(product.getPid());
