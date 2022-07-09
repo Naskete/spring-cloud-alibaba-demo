@@ -18,7 +18,8 @@ public class Order {
     private Integer pid;
     private String pname;
     private Double pprice;
-    private Integer stock;
+
+    private Integer number;
 
     public Long getOid() {
         return oid;
@@ -68,11 +69,11 @@ public class Order {
         this.pprice = pprice;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }
