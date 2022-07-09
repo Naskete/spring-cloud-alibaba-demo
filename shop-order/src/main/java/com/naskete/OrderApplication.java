@@ -15,7 +15,7 @@ public class OrderApplication {
     }
 
     @Bean
-    @LoadBalanced
+//    @LoadBalanced //负载均衡
     public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
