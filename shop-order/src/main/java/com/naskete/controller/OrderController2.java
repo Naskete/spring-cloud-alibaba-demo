@@ -26,7 +26,7 @@ public class OrderController2 {
         Product product = productService.findByPid(pid);
         log.info(">>查询到{}号商品的信息,内容是:{}", pid, JSON.toJSONString(product));
         try {
-            Thread.sleep(100);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

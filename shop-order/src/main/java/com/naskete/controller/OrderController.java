@@ -26,9 +26,9 @@ public class OrderController {
     @Autowired
     private ProductService productService;
 
-
     @GetMapping("/order/prod/{pid}")
     public Order order(@PathVariable("pid") Integer pid) {
+        log.info(">>客户下单,这时候要调用商品微服务查询商品信息");
         Product product = productService.findByPid(pid);
         log.info(">>商品查询结果: " + JSON.toJSONString(product));
         Order order = new Order();
@@ -38,7 +38,7 @@ public class OrderController {
         order.setPid(product.getPid());
         order.setPname(product.getPname());
         order.setPprice(product.getPprice());
-        order.setStock(product.getStock());
+        order.setNumber(1);
         orderService.saveOrder(order);
         return order;
     }

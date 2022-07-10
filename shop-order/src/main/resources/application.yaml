@@ -1,5 +1,8 @@
 server:
   port: 8091
+  tomcat:
+    threads:
+      max: 10
 spring:
   application:
     name: shop-order
@@ -18,3 +21,11 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+      enabled: true
+      eager: true
+      filter:
+        url-patterns: /**
