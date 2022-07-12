@@ -22,8 +22,12 @@ public class OrderController2 {
 
     @GetMapping("/order/product/{pid}")
     public Order order(@PathVariable("pid") Integer pid) {
-        log.info(">>接收到{}号商品的下单请求,接下来调用商品微服务查询此商品信息", pid);
         Product product = productService.findByPid(pid);
+        if (product.getPid() == -1) {
+            Order order = new Order();
+            order.setPname("失败");
+            return order;
+        }
         log.info(">>查询到{}号商品的信息,内容是:{}", pid, JSON.toJSONString(product));
         try {
             Thread.sleep(200);

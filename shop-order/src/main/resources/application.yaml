@@ -26,6 +26,7 @@ spring:
         dashboard: 127.0.0.1:8080
         port: 8719
       filter:
+        enabled: true
         url-patterns: /**
       eager: true
 management:
@@ -33,3 +34,6 @@ management:
     web:
       exposure:
         include: '*'
+feign:
+  sentinel:
+    enabled: true
