@@ -1,4 +1,4 @@
-package com.naskete.Filter;
+package com.naskete.filter;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
