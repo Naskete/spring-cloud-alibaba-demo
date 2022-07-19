@@ -21,5 +21,5 @@ spring:
 #            - After=2022-07-15T20:00:00.000+08:00 # 断言时间限制
           filters: # 过滤器用于修改请求和响应信息。
             - StripPrefix=1
-            - SetStatus=2022
+#            - SetStatus=2022
             - Log=true,false
