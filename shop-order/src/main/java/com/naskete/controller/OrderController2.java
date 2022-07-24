@@ -6,6 +6,7 @@ import com.naskete.entity.Product;
 import com.naskete.service.OrderService;
 import com.naskete.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,9 @@ public class OrderController2 {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
 
     @GetMapping("/order/product/{pid}")
     public Order order(@PathVariable("pid") Integer pid) {
@@ -44,6 +48,7 @@ public class OrderController2 {
         order.setNumber(1);
 //        为了不产生太多垃圾数据,暂时不做订单保存
 //        orderService.saveOrder(order);
+        rocketMQTemplate.convertAndSend("order-topic", order);
         return order;
     }
 
