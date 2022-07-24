@@ -1,6 +1,12 @@
 server:
   port: 7000
 spring:
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    discovery-client-enabled: false
+  sleuth:
+    sampler:
+      probability: 1.0
   application:
     name: api-gateway
   cloud:
@@ -17,9 +23,9 @@ spring:
           order: 1 # 用于多个 Route 之间的排序，数值越小排序越靠前，匹配优先级越高。
           predicates: # 进行条件判断，只有断言都返回真，才会真正的执行路由。
             - Path=/product-serv/**
-            - Age=18,60
+#            - Age=18,60
 #            - After=2022-07-15T20:00:00.000+08:00 # 断言时间限制
           filters: # 过滤器用于修改请求和响应信息。
             - StripPrefix=1
 #            - SetStatus=2022
-            - Log=true,false
+#            - Log=true,false
